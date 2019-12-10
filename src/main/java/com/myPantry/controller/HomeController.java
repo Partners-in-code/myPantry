@@ -28,6 +28,7 @@ import com.myPantry.domain.security.UserRole;
 import com.myPantry.service.UserService;
 import com.myPantry.service.impl.UserSecurityService;
 import com.myPantry.utility.MailConstructor;
+import com.myPantry.utility.SecurityUtility;
 
 @Controller
 public class HomeController {
@@ -48,7 +49,7 @@ public class HomeController {
 	public String index() {
 		return "index";
 	}
-
+	
 	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("classActiveLogin", true);
@@ -111,12 +112,12 @@ public class HomeController {
 		User user = new User();
 		user.setUsername(username);
 		user.setEmail(userEmail);
-
-		String password = "1234";
-
 		
-		user.setPassword(password);
-
+		String password = SecurityUtility.randomPassword();
+		
+		String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);
+		user.setPassword(encryptedPassword);
+		
 		Role role = new Role();
 		role.setRoleId(1);
 		role.setName("ROLE_USER");

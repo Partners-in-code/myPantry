@@ -16,6 +16,7 @@ import com.myPantry.domain.User;
 import com.myPantry.domain.security.Role;
 import com.myPantry.domain.security.UserRole;
 import com.myPantry.service.UserService;
+import com.myPantry.utility.SecurityUtility;
 
 @SpringBootApplication
 public class MyPantryApplication implements CommandLineRunner {
@@ -33,7 +34,8 @@ public class MyPantryApplication implements CommandLineRunner {
 		user1.setFirstName("Maria");
 		user1.setLastName("Bobes");
 		user1.setUsername("MB");
-		user1.setPassword("mb");
+		user1.setPassword(SecurityUtility.passwordEncoder().encode("mb"));
+
 		user1.setEmail("maria.bobes08@gmail.com");
 
 		Set<UserRole> userRoles = new HashSet<>();
