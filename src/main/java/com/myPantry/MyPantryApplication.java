@@ -31,12 +31,12 @@ public class MyPantryApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		User user1 = new User();
-		user1.setFirstName("Maria");
-		user1.setLastName("Bobes");
-		user1.setUsername("MB");
-		user1.setPassword(SecurityUtility.passwordEncoder().encode("mb"));
+		user1.setFirstName("fName");
+		user1.setLastName("lName");
+		user1.setUsername("fl");
+		user1.setPassword(SecurityUtility.passwordEncoder().encode("fl"));
 
-		user1.setEmail("maria.bobes08@gmail.com");
+		user1.setEmail("f.l@12.10.2019");
 
 		Set<UserRole> userRoles = new HashSet<>();
 
