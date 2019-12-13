@@ -28,7 +28,7 @@
 				<div id="navbar">
 					<ul class="nav navbar-nav navbar-left">
 						<li><a href="/">HOME</a></li>
-						<li><a th:href="@{/addProduct}">ADD PRODUCT</a></li>
+						<li><a th:href="@{/product/add}">ADD PRODUCT</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">RECIPES <span class="caret"></span></a>
@@ -48,10 +48,10 @@
 						</form>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY PANTRY</a></li>
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/myPantry}">MY PANTRY</a></li>
 						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a></li>
 						<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
-						<li><a href="/shoppingList">SHOPPING LIST</a></li>
+						<li><a sec:authorize="isAuthenticated()" href="/shoppingList">SHOPPING LIST</a></li>
 						
 						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
 					</ul>

@@ -17,67 +17,61 @@ import com.myPantry.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{
-		private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
+	
+	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private PasswordResetTokenRepository passwordResetTokenRepository;
+	
+	@Override
+	public PasswordResetToken getPasswordResetToken(final String token) {
+		return passwordResetTokenRepository.findByToken(token);
+	}
+	
+	@Override
+	public void createPasswordResetTokenForUser(final User user, final String token) {
+		final PasswordResetToken myToken = new PasswordResetToken(token, user);
+		passwordResetTokenRepository.save(myToken);
+	}
+	
+	@Override
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
+	
+	@Override
+	public User findByEmail (String email) {
+		return userRepository.findByEmail(email);
+	}
+	
+	@Override
+	public User createUser(User user, Set<UserRole> userRoles){
+		User localUser = userRepository.findByUsername(user.getUsername());
 		
-		@Autowired
-		private UserRepository userRepository;
-		
-		@Autowired
-		private RoleRepository roleRepository;
-		
-		@Autowired
-		private PasswordResetTokenRepository passwordResetTokenRepository;
-		
-		@Override
-		public PasswordResetToken getPasswordResetToken(final String token) {
-			return passwordResetTokenRepository.findByToken(token);
-		}
-		
-		@Override
-		public void createPasswordResetTokenForUser(final User user, final String token) {
-			final PasswordResetToken myToken = new PasswordResetToken(token, user);
-			passwordResetTokenRepository.save(myToken);
-		}
-		
-		
-		@Override
-		public User findByUsername(String username) {
-			return userRepository.findByUsername(username);
-		}
-		
-		@Override
-		public User findByEmail (String email) {
-			return userRepository.findByEmail(email);
-		}
-		
-		@Override
-		public User createUser(User user, Set<UserRole> userRoles){
-			User localUser = userRepository.findByUsername(user.getUsername());
-			
-			if(localUser != null) {
-				LOG.info("user {} already exists. Nothing will be done.", user.getUsername());
-			} else {
-				for (UserRole ur : userRoles) {
-					roleRepository.save(ur.getRole());
-				}
-				
-				user.getUserRoles().addAll(userRoles);
-				
-				localUser = userRepository.save(user);
+		if(localUser != null) {
+			LOG.info("user {} already exists. Nothing will be done.", user.getUsername());
+		} else {
+			for (UserRole ur : userRoles) {
+				roleRepository.save(ur.getRole());
 			}
 			
-			return localUser;
+			user.getUserRoles().addAll(userRoles);
+			
+			localUser = userRepository.save(user);
 		}
 		
-		@Override
-		public User save(User user) {
-			return userRepository.save(user);
-		}
-
-		@Override
-		public User findById(Long id) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
+		return localUser;
 	}
+	
+	@Override
+	public User save(User user) {
+		return userRepository.save(user);
+	}
+
+}

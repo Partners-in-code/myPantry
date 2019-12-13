@@ -5,11 +5,7 @@ import java.util.List;
 import com.myPantry.domain.Product;
 
 public interface ProductService {
-	public Product save(Product rose) ;
+	Product save(Product product);
+	List<Product> findAll();
 	
-	public List<Product> findAll();
-	
-	public Product findOne(Long id) ;
-	
-	public void removeOne(Long id);
 }
