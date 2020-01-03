@@ -11,10 +11,11 @@
 		<div th:replace="common/header :: navbar"></div>
 
 		<div class="container">
-			<div class="row" style="margin-bottom: -20px;">
+			<div class="row" style="margin-bottom: -50px;">
 				<div class="col-xs-8">
 					<h2 class="section-headline">
-						<span>User Account</span>
+						<span
+						th:text="${user}? ${#strings.toUpperCase(user.username)} : 'Username'"></span>
 					</h2>
 				</div>
 				<div class="col-xs-4">
@@ -35,7 +36,7 @@
 					<a type="button" href="/" class="btn btn-secondary"
 						style="font-size: 22px; background-color: rgba(101, 165, 186, 1); background: -webkit-linear-gradient(top, rgba(189, 147, 147, 1) 0%, rgba(101, 165, 186, 1) 100%); background: linear-gradient(to bottom, rgba(189, 147, 147, 1) 0%, rgba(101, 165, 186, 1) 100%); border-width: 0px; border-radius: 30px; color: rgba(115, 0, 13, 1);">Update
 						Product</a>
-					<a type="button" th:href="@{/product/productList}"
+					<a type="button" th:href="@{/productshelf}"
 						class="btn btn-secondary"
 						style="font-size: 22px; background-color: rgba(101, 165, 186, 1); background: -webkit-linear-gradient(top, rgba(189, 147, 147, 1) 0%, rgba(101, 165, 186, 1) 100%); background: linear-gradient(to bottom, rgba(189, 147, 147, 1) 0%, rgba(101, 165, 186, 1) 100%); border-width: 0px; border-radius: 30px; color: rgba(115, 0, 13, 1);">View 
 						Product List</a>
