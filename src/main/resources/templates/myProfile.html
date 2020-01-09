@@ -40,6 +40,15 @@
 							<div class="panel panel-default" style="border: none;">
 								<div class="panel-body"
 									style="background-color: #ededed; margin-top: 20px;">
+									
+									<div class="alert alert-danger" th:if="${incorrectPassword}">
+										<strong>Incorrect Password!</strong> Please enter the correct password for the current user.
+									</div>
+									
+									<div class="alert alert-succss" th:if="${updateSuccess}">
+										<strong>Update Success!</strong>
+									</div>
+									
 									<form th:action="@{/updateUserInfo}" method="post">
 										<input type="hidden" name="id" th:value="${user.id}" />
 
@@ -86,8 +95,8 @@
 											notification.</p>
 
 										<div class="form-group">
-											<label for="txtNewPassword">Password</label>&nbsp;<span
-												id="checkPasswordMatch" style="color: red;"></span> <input
+											<label for="txtNewPassword">Password</label>&nbsp;<span id="checkPasswordMatch" style="color:red;"></span> 
+											 <input
 												type="password" class="form-control" id="txtNewPassword"
 												name="newPassword" />
 										</div>
@@ -99,8 +108,7 @@
 										<p style="color: #828282">To change the current user
 											password, enter the new password in both fields.</p>
 
-										<button id="updateUserInfoButton" type="submit"
-											class="btn btn-primary">Save All</button>
+										<button  id="updateUserInfoButton" type="submit" class="btn btn-primary">Save All</button>
 									</form>
 								</div>
 							</div>

@@ -1,5 +1,6 @@
 package com.myPantry.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,12 @@ public class RecipeServiceImpl implements RecipeService{
 
 	public Recipe findOne(Long id) {
 		return recipeRepository.findById(id).orElse(null);
+	}
+	public List<Recipe> findByName(String name){
+		List<Recipe> recipeList = recipeRepository.findByName(name);
+		
+		List<Recipe> activeRecipeList = new ArrayList<>();
+		
+		return activeRecipeList;
 	}
 }

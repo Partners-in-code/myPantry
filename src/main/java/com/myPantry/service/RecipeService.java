@@ -9,5 +9,7 @@ public interface RecipeService {
 	List<Recipe> findAll();
 
 	Recipe findOne(Long id);
+
+	List<Recipe> findByName(String category);
 	
 }
