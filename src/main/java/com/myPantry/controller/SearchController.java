@@ -38,7 +38,7 @@ public class SearchController {
 		classActiveCategory = classActiveCategory.replaceAll("&", "");
 		model.addAttribute(classActiveCategory, true);
 		
-		List<Recipe> recipeList = recipeService.findByCategory(category);
+		List<Recipe> recipeList = recipeService.findByName(category);
 		
 		if (recipeList.isEmpty()) {
 			model.addAttribute("emptyList", true);
