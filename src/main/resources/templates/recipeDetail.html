@@ -23,41 +23,51 @@
 		<!-- 			style="margin-top: -75px;" /> -->
 
 
-		<form th:action="@{/shoppingCart/addItem}" method="post">
+		<form th:action="@{/addFavorite(id=${recipe.id})}" method="post">
 			<input hidden="hidden" name="id" th:value="${recipe.id}" />
 			<div class="row">
-			<div class="col-xs-2">
-					<a th:href="@{/recipeshelf}">Back to recipe list</a>
-				</div></div>
+				<div class="col-xs-2">
+					<a th:href="@{/recipeshelf}">Go back</a>
+				</div>
+			</div>
 			<div class="row" style="margin-top: 40px;">
-				<div class="col-xs-2"></div>
+				<div class="col-xs-1"></div>
 				<div class="col-xs-4">
 					<img alt="thumbnail" class="img-thumbnail shelf-recipe"
 						th:src="#{adminPath}+@{/image/recipe/}+${recipe.id}+'.png'" />
+
 				</div>
 
+
 				<div class="col-xs-6">
-					<h3 th:text="${recipe.name}">Recipe Name</h3>
+					<h3 th:utext="${recipe.name}">Recipe Name</h3>
 					<div class="row">
-						<div class="col-xs-9">
+						<div class="col-xs-8">
 							<!--     					<h5><strong>Name </strong><span th:text="${recipe.name}"></span></h5> -->
 							<p>
 								<strong>Timp de preparare: </strong><span
-									th:text="${recipe.timp_preparare}"></span>
+									th:utext="${recipe.timp_preparare}"></span>
 							</p>
 							<p>
 								<strong>Ingrediente: </strong><span
-									th:text="${recipe.ingrediente}"></span>
+									th:utext="${recipe.ingrediente}"></span>
 							</p>
 							<p>
 								<strong>Mod de preparare: </strong><span
-									th:utext="${#strings.abbreviate(recipe.mod_de_preparare, 500)}"></span>
+									th:utext="${#strings.abbreviate(recipe.mod_de_preparare, 10000)}"></span>
 							</p>
+						</div>
+						<div class="col-xs-4">
+<!-- 							<a th:href="@{/addFavorite(id=${recipe.id})}"></a> -->
+							<button type="submit" class="btn btn-success btn-xl">
+								<span class="glyphicon glyphicon-plus"></span> Add to favorite
+							</button>
 						</div>
 					</div>
 				</div>
+				<div class="col-xs-1"></div>
 			</div>
-			<br /><br />
+			<br /> <br />
 		</form>
 	</div>
 	<!-- end of container -->

@@ -40,13 +40,16 @@
 								<div th:if="${product != null}">
 									<div class="row">
 										<div class="col-xs-8">
-											<img alt="thumbnail" class="img-thumbnail shelf-product"
-												th:src="@{/image/product/}+${product.id}+'.png'" style="width: 300px; height: 250px;" />
+											<a th:href="@{/product/productInfo(id=${product.id})}"><img
+												alt="thumbnail" class="img-thumbnail shelf-product"
+												th:src="@{/image/product/}+${product.id}+'.png'"
+												style="width: 300px; height: 250px;" /></a>
 										</div>
 										<div class="col-xs-1"></div>
 										<div class="col-xs-3">
-											<h4 th:text="${product.name}"></h4>
-											<span th:text="${product.type}"></span> <span
+											<a th:href="@{/product/productInfo(id=${product.id})}"><h4
+													th:utext="${product.name}"></h4></a> <span
+												th:text="${product.type}"></span> <span
 												th:text="${product.unit}"></span>
 
 										</div>

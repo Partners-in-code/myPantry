@@ -13,17 +13,27 @@
 				<thead>
 					<tr>
 						<th>Name</th>
-						<th>Unit</th>
-						<th>Type</th>
+						<th>Cantitate</th>
+						<th>Unitate</th>
+						<th>Operations</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr data-th-each="product : ${productList}">
-<!-- 						<td><input hidden="hidden" name="id" th:value="${product.id}" /></td> -->
-						<td th:text="${product.name}"></td>
-						<td th:text="${product.unit}"></td>
-						<td th:text="${product.type}"></td>
-<!-- 						<td>delete</td> -->
+<!-- 												<td><input hidden="hidden" name="id" th:value="${product.id}" /></td> -->
+						<td><a th:href="@{/product/productInfo(id=${product.id})}"><span
+								th:utext="${product.name}"></span></a></td>
+						<td th:utext="${product.type}"></td>
+						<td th:utext="${product.unit}"></td>
+						<td>
+						<input hidden="hidden" name="id" th:value="${product.id}" />
+<!-- 							<a th:href="@{/product/updateProduct(id=${product.id})}"><button -->
+<!-- 									type="button" class="btn btn-success btn-sm" style="width:60px;">Edit</button></a> -->
+							<button th:id="'oneProduct-'+${product.id}"
+								class="btn btn-danger btn-sm delete-product" type="submit"
+								value="delete">
+								<span class="fa fa-times"></span>Delete
+							</button></td>
 					</tr>
 				</tbody>
 			</table>
@@ -32,5 +42,17 @@
 	</div>
 
 	<div th:replace="common/header :: body-bottom-scripts"></div>
+	<script>
+		$(document).ready(
+				function() {
+					$("#productListTable").DataTable(
+							{
+								"lengthMenu" : [ [ 5, 10, 15, 20, -1 ],
+										[ 5, 10, 15, 20, "All" ] ],
+								"ordering" : false,
+								stateSave : true
+							});
+				});
+	</script>
 </body>
 </html>

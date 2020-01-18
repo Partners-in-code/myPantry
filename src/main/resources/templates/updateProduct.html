@@ -7,15 +7,16 @@
 	<div th:replace="common/header :: navbar"></div>
 	<div class="container">
 		<div class="row">
-			<form class="form-horizontal" th:action="@{/product/add}" method="post"
-				enctype="multipart/form-data">
+
+			<form class="form-horizontal" th:action="@{/product/updateProduct}"
+				method="post" enctype="multipart/form-data">
 				<fieldset>
 					<legend class="center-block">
-						New Product Information<span style="font-size: small"> * is a
-							required field</span>
+						Update Product Information<span style="font-size: small"> *
+							is a required field</span>
 					</legend>
 
-
+					<input hidden="hidden" name="id" th:value=${product.id} />
 					<!-- name -->
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="name">* Name</label>
@@ -27,6 +28,16 @@
 						</div>
 					</div>
 
+					<!-- type -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="type">*
+							quantity</label>
+						<div class="col-md-8">
+							<input type="text" name="type" class="form-control" id="type"
+								th:value="${product.type}" required="required" placeholder="..." />
+							<span class="help-block">Quantity of product</span>
+						</div>
+					</div>
 					<!-- unit -->
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="unit">* Unit</label>
@@ -37,21 +48,11 @@
 									select an option...</option>
 								<option value="g" th:selected="(${product.unit}=='g')">g</option>
 								<option value="kg" th:selected="(${product.unit}=='kg')">kg</option>
-								<option value="oz" th:selected="(${product.unit}=='oz')">oz</option>
+<!-- 								<option value="oz" th:selected="(${product.unit}=='oz')">oz</option> -->
 								<option value="ml" th:selected="(${product.unit}=='ml')">ml</option>
 								<option value="l" th:selected="(${product.unit}=='l')">l</option>
 								<option value="pc" th:selected="(${product.unit}=='pc')">pc</option>
 							</select>
-						</div>
-					</div>
-
-					<!-- type -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="type">* quantity</label>
-						<div class="col-md-8">
-							<input type="text" name="type" class="form-control" id="type"
-								th:value="${product.type}" required="required" placeholder="..." />
-							<span class="help-block">Quantity of product</span>
 						</div>
 					</div>
 
@@ -69,8 +70,10 @@
 					<div class="form-group">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
-							<button type="submit" class="btn btn-success">Add Product</button>
-							<a class="btn btn-danger" th:href="@{/}">Cancel</a>
+							<button type="submit" class="btn btn-success">Update
+								Product</button>
+							<a class="btn btn-danger"
+								th:href="@{/product/productInfo(id=${product.id})}">Cancel</a>
 						</div>
 					</div>
 				</fieldset>
