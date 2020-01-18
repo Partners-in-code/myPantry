@@ -11,5 +11,7 @@ public interface RecipeService {
 	Recipe findOne(Long id);
 
 	List<Recipe> findByName(String category);
+
+	List<Recipe> blurrySearch(String keyword);
 	
 }

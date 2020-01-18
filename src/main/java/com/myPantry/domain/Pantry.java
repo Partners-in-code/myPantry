@@ -1,46 +1,66 @@
-package com.myPantry.domain;
-
-public class Pantry {
-	private int id_user;
-	private int id_product;
-	private int quantity;
-
-	public Pantry() {
-	}
-
-	public Pantry(int id_u, int id_p, int quant) {
-		this.id_user = id_u;
-		this.id_product = id_p;
-		this.quantity = quant;
-	}
-
-	public Pantry(Pantry p) {
-		this.id_user = p.getIdUser();
-		this.id_product = p.getIdProduct();
-		this.quantity = p.getQuantity();
-	}
-
-	public void setIdUser(int id_u) {
-		this.id_user = id_u;
-	}
-
-	public int getIdUser() {
-		return this.id_user;
-	}
-
-	public void setIdProduct(int id_p) {
-		this.id_product = id_p;
-	}
-
-	public int getIdProduct() {
-		return this.id_product;
-	}
-
-	public void setQuantity(int q) {
-		this.quantity = q;
-	}
-
-	public int getQuantity() {
-		return this.quantity;
-	}
-}
+//package com.myPantry.domain;
+//
+//import javax.persistence.Entity;
+//import javax.persistence.FetchType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
+//import javax.persistence.Table;
+//
+//@Entity
+//@Table(name="pantry")
+//public class Pantry {
+//
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.AUTO)
+//	private Long userProductId;
+//	
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name="user_id")
+//	private User user;
+//	
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name="product_id")
+//	private Product product;
+//	
+//	public Pantry(){}
+//	
+//	public Pantry(User user, Product product) {
+//		this.user = user;
+//		this.product = product;
+//	}
+//
+//
+//	public Long getPantryId() {
+//		return userProductId;
+//	}
+//
+//
+//	public void setPantryId(Long userProductId) {
+//		this.userProductId = userProductId;
+//	}
+//
+//
+//	public User getUser() {
+//		return user;
+//	}
+//
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
+//
+//
+//	public Product getProduct() {
+//		return product;
+//	}
+//
+//
+//	public void setProduct(Product product) {
+//		this.product = product;
+//	}
+//	
+//	
+//}

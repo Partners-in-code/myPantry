@@ -1,42 +1,64 @@
 package com.myPantry.domain;
 
-import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
+@Table(name = "Product")
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_product", nullable = false, updatable = false)
+	private Long id_product;
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_user")
+	private User user;
 
-	private Long id;
+	public Product() {
+		super();
+	}
+
+	public Product(User user, String name, String unit, String type) {
+		super();
+		this.user = user;
+		this.name = name;
+		this.unit = unit;
+		this.type = type;
+	}
+
 	private String name;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	private String unit;
 	private String type;
 
 	@Transient
 	private MultipartFile productImage;
 
-//	@OneToMany(mappedBy = "product")
-//	@JsonIgnore
-//	private List<productToPantryItem> productToPantryItemList;
-
 	public Long getId() {
-		return id;
+		return id_product;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id_product = id;
 	}
 
 	public String getName() {
@@ -70,13 +92,5 @@ public class Product {
 	public void setProductImage(MultipartFile productImage) {
 		this.productImage = productImage;
 	}
-
-//	public List<productToPantryItem> getProductToPantryItemList() {
-//		return productToPantryItemList;
-//	}
-//
-//	public void setProductToPantryItemList(List<productToPantryItem> productToPantryItemList) {
-//		this.productToPantryItemList = productToPantryItemList;
-//	}
 
 }
