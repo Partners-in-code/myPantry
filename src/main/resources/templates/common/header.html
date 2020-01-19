@@ -24,7 +24,7 @@
 <link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
 <!-- Custom styles for this template -->
 
-<link rel="icon" href="/image/dar_logo.png" />
+<link rel="icon" href="/image/icon.png" />
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>
 	tinymce.init({
@@ -215,7 +215,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="/recipeshelf"
 									sec:authorize="isAuthenticated()">All recipes</a></li>
-								<li><a href="/myRecipes">My recipes</a></li>
+								<li><a th:href="@{/favorite/cart}">My recipes</a></li>
 
 							</ul></li>
 						<li>
