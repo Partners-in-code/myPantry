@@ -1,12 +1,16 @@
 package com.myPantry.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class RecipeIngredientList {
+	@Id
 	private Long id;
 	private int listLenght;
 	private RecipeIngredient recipeIngredient[];
+	
 	public RecipeIngredientList() {
 		super();
 	}
