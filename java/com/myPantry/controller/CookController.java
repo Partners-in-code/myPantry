@@ -25,6 +25,7 @@ import com.myPantry.service.RecipeService;
 import com.myPantry.service.UserService;
 
 @Controller
+@RequestMapping("/cook")
 public class CookController {
 	@Autowired
 	private UserService userService;
