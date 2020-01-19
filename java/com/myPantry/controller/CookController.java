@@ -60,7 +60,7 @@ public class CookController {
 
 			Product product = productService.findByName(user.getId(), recipeIngredientList.elementAt(i).getName());
 			if (product == null)
-				return "redirect:/product/produsInsuficientSauInexistent";
+				return "redirect:/productInsufficientOrInexistent";
 			else {
 				Integer quant=0;
 				if (product.getUnit().equals("ml") && recipeIngredient.getUnit().equals("l")
@@ -91,7 +91,7 @@ public class CookController {
 					}
 				}
 				if(quant<0)
-					return "redirect:/product/produsInsuficientSauInexistent";
+					return "redirect:/productInsufficientOrInexistent";
 			}
 		}
 		return "canCook";
