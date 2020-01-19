@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+		<div class="row" style="margin-bottom: -50px;">
+			<div class="col-xs-8">
+				<h2 class="section-headline">
+					<span
+						th:text="${user}? ${#strings.toUpperCase(user.username)} : 'All Products'"></span>
+				</h2>
+			</div>
+			<div class="col-xs-4">
+				<img src="/image/logo.png" class="img-responsive" />
+			</div>
+		</div>
+		<hr
+			style="position: absolute; width: 100%; height: 6px; background-color: #333; z-index: -1; margin-top: -80px;" />
+		<!-- 		<img class="img-responsive" src="/image/raft1.jpg" -->
+		<!-- 			style="margin-top: -75px;" /> -->
+
+		<div class="row" style="margin-top: 60px;">
+			<div class="col-xs-10 col-xs-offset-2">
+				<div th:if="${emptyList}">
+					<h5 style="font-style: italic;">Oops, no result is found. Try
+						something else or try again later.</h5>
+				</div>
+				<table border="0" id="productList">
+					<thead>
+						<tr>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="product-item" data-th-each="product: ${productList}">
+							<td>
+								<div th:if="${product != null}">
+									<div class="row">
+										<div class="col-xs-8">
+											<a th:href="@{/product/productInfo(id=${product.id})}"><img
+												alt="thumbnail" class="img-thumbnail shelf-product"
+												th:src="@{/image/product/}+${product.id}+'.png'"
+												style="width: 300px; height: 250px;" /></a>
+										</div>
+										<div class="col-xs-1"></div>
+										<div class="col-xs-3">
+											<a th:href="@{/product/productInfo(id=${product.id})}"><h4
+													th:utext="${product.name}"></h4></a> <span
+												th:text="${product.type}"></span> <span
+												th:text="${product.unit}"></span>
+
+										</div>
+									</div>
+								</div>
+							</td>
+							<td><br /> <br /> <br /> <br /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- end of container -->
+
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

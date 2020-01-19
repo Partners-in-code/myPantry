@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="common-header">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MY PANTRY</title>
+
+
+<!-- Bootstrap core CSS -->
+<!-- <link -->
+<!-- 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" -->
+<!-- 	rel="stylesheet" /> -->
+
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+<!-- <link href="/css/non-responsive.css" rel="stylesheet" /> -->
+
+
+<!-- data table -->
+<link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" />
+<link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
+<!-- Custom styles for this template -->
+
+<link rel="icon" href="/image/icon.png" />
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>
+	tinymce.init({
+		selector : 'textarea'
+	});
+</script>
+</head>
+
+<body>
+	<div th:fragment="navbar">
+		<style>
+.navbar {
+	background-color: #66bb6a;
+}
+
+.navbar .navbar-brand {
+	color: #000000;
+}
+
+.navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
+	color: #000000;
+}
+
+.navbar .navbar-text {
+	color: #000000;
+}
+
+.navbar .navbar-text a {
+	color: #000000;
+}
+
+.navbar .navbar-text a:hover, .navbar .navbar-text a:focus {
+	color: #000000;
+}
+
+.navbar .navbar-nav .nav-link {
+	color: #000000;
+	border-radius: .25rem;
+	margin: 0 0.25em;
+}
+
+.navbar .navbar-nav .nav-link:not (.disabled ):hover, .navbar .navbar-nav .nav-link:not
+	 (.disabled ):focus {
+	color: #000000;
+}
+
+.navbar .navbar-nav .dropdown-menu {
+	background-color: #66bb6a;
+	border-color: #66bb6a;
+}
+
+.navbar .navbar-nav .dropdown-menu .dropdown-item {
+	color: #000000;
+}
+
+.navbar .navbar-nav .dropdown-menu .dropdown-item:hover, .navbar .navbar-nav .dropdown-menu .dropdown-item:focus,
+	.navbar .navbar-nav .dropdown-menu .dropdown-item.active {
+	color: #000000;
+	background-color: #66bb6a;
+}
+
+.navbar .navbar-nav .dropdown-menu .dropdown-divider {
+	border-top-color: #66bb6a;
+}
+
+.navbar .navbar-nav .nav-item.active .nav-link, .navbar .navbar-nav .nav-item.active .nav-link:hover,
+	.navbar .navbar-nav .nav-item.active .nav-link:focus, .navbar .navbar-nav .nav-item.show .nav-link,
+	.navbar .navbar-nav .nav-item.show .nav-link:hover, .navbar .navbar-nav .nav-item.show .nav-link:focus
+	{
+	color: #000000;
+	background-color: #66bb6a;
+}
+
+.navbar .navbar-toggle {
+	border-color: #66bb6a;
+}
+
+.navbar .navbar-toggle:hover, .navbar .navbar-toggle:focus {
+	background-color: #66bb6a;
+}
+
+.navbar .navbar-toggle .navbar-toggler-icon {
+	color: #000000;
+}
+
+.navbar .navbar-collapse, .navbar .navbar-form {
+	border-color: #000000;
+}
+
+.navbar .navbar-link {
+	color: #000000;
+}
+
+.navbar .navbar-link:hover {
+	color: #000000;
+}
+
+@media ( max-width : 575px) {
+	.navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {
+		color: #000000;
+	}
+	.navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+		.navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:focus
+		{
+		color: #000000;
+	}
+	.navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item.active
+		{
+		color: #000000;
+		background-color: #66bb6a;
+	}
+}
+
+@media ( max-width : 767px) {
+	.navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item {
+		color: #000000;
+	}
+	.navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+		.navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:focus
+		{
+		color: #000000;
+	}
+	.navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item.active
+		{
+		color: #000000;
+		background-color: #66bb6a;
+	}
+}
+
+@media ( max-width : 991px) {
+	.navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item {
+		color: #000000;
+	}
+	.navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+		.navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:focus
+		{
+		color: #000000;
+	}
+	.navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item.active
+		{
+		color: #000000;
+		background-color: #66bb6a;
+	}
+}
+
+@media ( max-width : 1199px) {
+	.navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item {
+		color: #000000;
+	}
+	.navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+		.navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:focus
+		{
+		color: #000000;
+	}
+	.navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active
+		{
+		color: #000000;
+		background-color: #66bb6a;
+	}
+}
+
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item {
+	color: #000000;
+}
+
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+	.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+	color: #000000;
+}
+
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
+	color: #000000;
+	background-color: #66bb6a;
+}
+</style>
+		<!-- 		<div class="page-top" -->
+		<!-- 			style="width: 100%; height: 15px; background-color: #ffcc80;"></div> -->
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default" style="background-color: #91e393;">
+			<div class="container-fluid">
+				<div id="navbar">
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="/"><i class="fa fa-home"></i> HOME</a></li>
+						<li class="dropdown"><a sec:authorize="isAuthenticated()"
+							th:href="@{/recipeshelf}" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false"><i class="fa fa-bars"></i> RECIPES </a>
+							<ul class="dropdown-menu">
+								<li><a href="/recipeshelf"
+									sec:authorize="isAuthenticated()">All recipes</a></li>
+								<li><a th:href="@{/favorite/cart}">My recipes</a></li>
+
+							</ul></li>
+						<li>
+							<form class="navbar-form" th:action="@{/searchRecipe}"
+								method="post">
+								<div class="form-group">
+									<input sec:authorize="isAuthenticated()" type="text"
+										name="keyword" class="form-control" placeholder="Recipe name" />
+								</div>
+								<button sec:authorize="isAuthenticated()" type="submit"
+									class="btn btn-default">Search</button>
+							</form>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown"><a sec:authorize="isAuthenticated()"
+							th:href="@{/myPantry}" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false"> MY PRODUCTS<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/product/add}">Add a product</a></li>
+								<!-- 								<li><a href="/">Delete a product</a></li> -->
+								<li><a th:href="@{/product/productList}">Modify a
+										product</a></li>
+								<li><a th:href="@{/productshelf}">View product list</a></li>
+
+
+							</ul></li>
+						<li><a sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-user"></span> LOG
+								IN</a></li>
+						<li><a sec:authorize="isAuthenticated()"
+							th:href="@{/myProfile}"><span class="glyphicon glyphicon-user"></span> EDIT MY PROFILE</a></li>
+
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!--/.container-fluid -->
+		</nav>
+	</div>
+	<div th:fragment="body-bottom-scripts">
+
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/scripts.js}"></script>
+		<script th:src="@{/js/bootbox.min.js}"></script>
+		<!-- data table -->
+		<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+	</div>
+</body>
+</html>
