@@ -68,13 +68,6 @@ public class HomeController {
 		model.addAttribute("classActiveLogin", true);
 		return "myAccount";
 	}
-
-	@RequestMapping("/myRecipes")
-	public String myRecipes(Model model) {
-		model.addAttribute("classActiveMyRecipes", true);
-		return "myRecipes";
-	}
-
 	@RequestMapping("/myProfile")
 	public String myProfile(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
@@ -82,23 +75,6 @@ public class HomeController {
 		model.addAttribute("classActiveEdit", true);
 
 		return "myProfile";
-	}
-
-	@RequestMapping(value = "/addFavorite", method = RequestMethod.POST)
-	public String addFavorite(@PathParam("id") Long id, Model model, Principal principal) {
-		User user = userService.findByUsername(principal.getName());
-		model.addAttribute("user", user);
-		Recipe recipe = recipeService.findOne(id);
-		recipe.setFavorite(true);
-		model.addAttribute("recipe", recipe);
-		return "redirect:/recipeshelf";
-	}
-
-	@RequestMapping("/recipeFavorite")
-	public String recipeFavorite(Model model) {
-		List<Recipe> recipeList = recipeService.findAll();
-		model.addAttribute("recipeList", recipeList);
-		return "myRecipes";
 	}
 
 	@RequestMapping("/myPantry")

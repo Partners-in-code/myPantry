@@ -1,13 +1,18 @@
 package com.myPantry.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Recipe {
@@ -20,14 +25,18 @@ public class Recipe {
 	private String ingrediente;
 	@Column(name = "mod_de_preparare", length = 5000)
 	private String mod_de_preparare;
-	private boolean favorite = false;
 
-	public boolean isFavorite() {
-		return favorite;
+	@OneToMany(mappedBy = "recipe")
+	@JsonIgnore
+	private List<RecipeToFavoriteItem> recipeToFavoriteItem;
+
+
+	public List<RecipeToFavoriteItem> getRecipeToFavoriteItem() {
+		return recipeToFavoriteItem;
 	}
 
-	public void setFavorite(boolean favorite) {
-		this.favorite = favorite;
+	public void setRecipeToFavoriteItem(List<RecipeToFavoriteItem> recipeToFavoriteItem) {
+		this.recipeToFavoriteItem = recipeToFavoriteItem;
 	}
 
 	@Transient

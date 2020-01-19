@@ -1,23 +1,29 @@
 package com.myPantry.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Favorite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@ManyToOne
-	@JoinColumn(name="id_recipe")
-	private Recipe recipe;
 	
-	@ManyToOne
-	@JoinColumn(name="id_user")
+	@OneToMany(mappedBy="favorite", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JsonIgnore
+	private List<FavoriteItem> favoriteItemList;
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 
 	public Long getId() {
@@ -28,12 +34,12 @@ public class Favorite {
 		this.id = id;
 	}
 
-	public Recipe getRecipe() {
-		return recipe;
+	public List<FavoriteItem> getFavoriteItemList() {
+		return favoriteItemList;
 	}
 
-	public void setRecipe(Recipe recipe) {
-		this.recipe = recipe;
+	public void setFavoriteItemList(List<FavoriteItem> favoriteItemList) {
+		this.favoriteItemList = favoriteItemList;
 	}
 
 	public User getUser() {
