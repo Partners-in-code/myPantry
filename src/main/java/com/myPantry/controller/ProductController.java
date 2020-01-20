@@ -87,7 +87,7 @@ public class ProductController {
 			}
 			productService.save(oldProduct);
 			MultipartFile productImage = oldProduct.getProductImage();
-			
+
 		} else {
 			product.setUser(user);
 			productService.save(product);
@@ -171,6 +171,19 @@ public class ProductController {
 		User user = userService.findByUsername(principal.getName());
 		model.addAttribute("user", user);
 		List<Product> productList = productService.findAll(user.getId());
+		for (int i = 0; i < productList.size(); i++) {
+			try {
+				if (Integer.parseInt(productList.get(i).getType()) == 0) {
+					Product product = productList.get(i);
+					String s = "oneProduct-" + product.getId().toString();
+					System.out.println(s);
+					productService.removeOne(Long.parseLong(s.substring(11)));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		productList = productService.findAll(user.getId());
 		model.addAttribute("productList", productList);
 		return "productshelf";
 	}

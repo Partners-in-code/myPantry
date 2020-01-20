@@ -68,6 +68,7 @@ public class HomeController {
 		model.addAttribute("classActiveLogin", true);
 		return "myAccount";
 	}
+
 	@RequestMapping("/myProfile")
 	public String myProfile(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
@@ -109,11 +110,29 @@ public class HomeController {
 		return "recipeDetail";
 	}
 
+//
+//	@RequestMapping("/productshelf")
+//	public String productshelf(Model model, Principal principal) {
+//		User user = userService.findByUsername(principal.getName());
+//		model.addAttribute("user", user);
+//		List<Product> productList = productService.findAll(user.getId());
+//		model.addAttribute("productList", productList);
+//		return "productshelf";
+//	}
 	@RequestMapping("/productshelf")
 	public String productshelf(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
 		model.addAttribute("user", user);
 		List<Product> productList = productService.findAll(user.getId());
+		for (int i = 0; i < productList.size(); i++) {
+			if (Integer.parseInt(productList.get(i).getType()) == 0) {
+				Product product = productList.get(i);
+				String s = "oneProduct-" + product.getId().toString();
+				System.out.println(s);
+				productService.removeOne(Long.parseLong(s.substring(11)));
+			}
+		}
+		productList = productService.findAll(user.getId());
 		model.addAttribute("productList", productList);
 		return "productshelf";
 	}
