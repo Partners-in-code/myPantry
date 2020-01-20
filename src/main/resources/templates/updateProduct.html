@@ -70,10 +70,11 @@
 					<div class="form-group">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
-							<button type="submit" class="btn btn-success">Update
+							<button type="submit" class="btn btn-success"><span class="fa fa-check"></span> Update
 								Product</button>
 							<a class="btn btn-danger"
-								th:href="@{/product/productInfo(id=${product.id})}">Cancel</a>
+								th:href="@{/product/productList}"><span class="fa fa-times"></span> Cancel</a>
+								<!-- productInfo(id=${product.id}) -->
 						</div>
 					</div>
 				</fieldset>

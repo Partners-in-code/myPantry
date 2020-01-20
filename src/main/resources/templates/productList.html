@@ -20,19 +20,19 @@
 				</thead>
 				<tbody>
 					<tr data-th-each="product : ${productList}">
-<!-- 												<td><input hidden="hidden" name="id" th:value="${product.id}" /></td> -->
+						<!-- 												<td><input hidden="hidden" name="id" th:value="${product.id}" /></td> -->
 						<td><a th:href="@{/product/productInfo(id=${product.id})}"><span
 								th:utext="${product.name}"></span></a></td>
 						<td th:utext="${product.type}"></td>
 						<td th:utext="${product.unit}"></td>
-						<td>
-						<input hidden="hidden" name="id" th:value="${product.id}" />
-<!-- 							<a th:href="@{/product/updateProduct(id=${product.id})}"><button -->
-<!-- 									type="button" class="btn btn-success btn-sm" style="width:60px;">Edit</button></a> -->
+						<td><input hidden="hidden" name="id" th:value="${product.id}" />
+							<a th:href="@{/product/updateProduct(id=${product.id})}"><button
+									type="button" class="btn btn-success btn-sm"
+									style="width: 60px;"><span class="fa fa-wrench"></span> Edit</button></a>
 							<button th:id="'oneProduct-'+${product.id}"
 								class="btn btn-danger btn-sm delete-product" type="submit"
 								value="delete">
-								<span class="fa fa-times"></span>Delete
+								<span class="fa fa-times"></span> Delete
 							</button></td>
 					</tr>
 				</tbody>
