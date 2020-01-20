@@ -89,5 +89,12 @@ public class Recipe {
 	public void setRecipeImage(MultipartFile recipeImage) {
 		this.recipeImage = recipeImage;
 	}
+		public String getNiceIngredients() {
+		String ingredientList[] = ingrediente.split(";");
+		String s = "";
+		for (int i = 0; i < ingredientList.length; i++)
+			s = s + "<p>"  + ingredientList[i] + "</p>";
+		return s;
+	}
 
 }
